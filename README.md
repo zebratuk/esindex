@@ -1,0 +1,2 @@
+# esindex
+Elasticsearch index builder
