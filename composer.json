@@ -1,0 +1,41 @@
+{
+    "name": "zebratuk/esindex",
+    "version": "0.0.1",
+    "time": "2025-06-18",
+    "homepage": "https://github.com/zebratuk/esindex",
+    "description": "Elasticsearch index builder",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "elasticsearch"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Esindex\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Esindex\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Maxim Usenko",
+            "homepage": "https://github.com/zebratuk",
+            "role": "Owner"
+        }
+    ],
+    "require": {
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5.46"
+    },
+    "suggest": {
+        "elasticsearch/elasticsearch": "Elasticsearch client library"
+    },
+    "archive": {
+        "exclude": ["tests", "examples"]
+    }
+}
