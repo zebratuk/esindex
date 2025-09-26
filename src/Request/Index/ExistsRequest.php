@@ -30,10 +30,8 @@ class ExistsRequest extends AbstractIndexRequest
 
     protected function buildData(array $data): array
     {
-        $result = [
-            self::FIELD_INDEX => $this->index,
-        ];
+        $data[self::FIELD_INDEX] = $this->index;
 
-        return $result;
+        return $data;
     }
 }

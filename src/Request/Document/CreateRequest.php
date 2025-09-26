@@ -32,17 +32,27 @@ class CreateRequest extends AbstractDocumentRequest
     ) {
     }
 
+    public function getIndex(): string
+    {
+        return $this->index;
+    }
+
+    public function getDocument(): DocumentDTO
+    {
+        return $this->document;
+    }
+
+    public function getId(): ?string
+    {
+        return $this->id;
+    }
+
     protected function buildData(array $data): array
     {
-        $result[self::FIELD_INDEX] = $this->index;
+        $data[self::FIELD_INDEX] = $this->index;
+        $data[self::FIELD_ID] = $this->id ?? $this->document->getId();
+        $data[self::FIELD_BODY] = $this->document->toArray();
 
-        $id = $this->id ?? $this->document->getId();
-        if (null !== $id) {
-            $result[self::FIELD_ID] = $id;
-        }
-
-        $result[self::FIELD_BODY] = $this->document->toArray();
-
-        return $result;
+        return $data;
     }
 }

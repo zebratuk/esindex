@@ -16,12 +16,22 @@ class AliasCreateRequest extends AbstractIndexRequest
     ) {
     }
 
+    public function getIndex(): array|string
+    {
+        return $this->index;
+    }
+
+    public function getAlias(): Alias
+    {
+        return $this->alias;
+    }
+
     protected function buildData(array $data): array
     {
-        return [
-            self::FIELD_INDEX => $this->index,
-            'name' => $this->alias->getName(),
-            self::FIELD_BODY => $this->alias->toArray(),
-        ];
+        $data[self::FIELD_INDEX] = $this->index;
+        $data['name'] = $this->alias->getName();
+        $data[self::FIELD_BODY] = $this->alias->toArray();
+
+        return $data;
     }
 }

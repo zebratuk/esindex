@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Esindex\DTO\Response\Document;
 
 use Esindex\Contracts\Arrayable;
+use Esindex\DTO\Response\ShardsDTO;
 use Esindex\Enums\Response\Document\ResultEnum;
 
 class DocumentDTO implements Arrayable

@@ -24,11 +24,17 @@ class AliasGetInfoRequest extends AbstractIndexRequest
     ) {
     }
 
+    /**
+     * @return string|string[]|null
+     */
     public function getName(): string|array|null
     {
         return $this->name;
     }
 
+    /**
+     * @return string|string[]|null
+     */
     public function getIndex(): string|array|null
     {
         return $this->index;
@@ -36,16 +42,9 @@ class AliasGetInfoRequest extends AbstractIndexRequest
 
     protected function buildData(array $data): array
     {
-        $result = [];
+        $data['name'] = $this->name;
+        $data[self::FIELD_INDEX] = $this->index;
 
-        if (null !== $this->name) {
-            $result['name'] = $this->name;
-        }
-
-        if (null !== $this->index) {
-            $result[self::FIELD_INDEX] = $this->index;
-        }
-
-        return $result;
+        return $data;
     }
 }

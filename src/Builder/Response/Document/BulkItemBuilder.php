@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Esindex\Builder\Response\Document;
 
+use Esindex\Builder\Response\ShardsBuilder;
 use Esindex\Common\ArrayUtil;
 use Esindex\DTO\Response\Document\BulkItemDTO;
 use Esindex\DTO\Response\Document\BulkItemErrorDTO;
@@ -15,8 +16,10 @@ class BulkItemBuilder
     public static function buildBulkItems(array $data): array
     {
         $result = [];
-        foreach ($data as $action => $row) {
-            $result[] = self::buildBulkItemDTO($action, $row);
+        foreach ($data as $row) {
+            $action = array_key_first($row);
+            $rowData = $row[$action];
+            $result[] = self::buildBulkItemDTO($action, $rowData);
         }
 
         return $result;

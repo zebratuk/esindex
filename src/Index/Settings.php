@@ -13,13 +13,19 @@ use Esindex\Index\Settings\Analysis;
  */
 class Settings implements Arrayable, \JsonSerializable
 {
-    private ?Analysis $analysis = null;
-    private array $settings = [];
+    private array $settings;
+
+    public function __construct(
+        private Analysis $analysis = new Analysis(),
+        array $settings = []
+    ) {
+        $this->setSettings($settings);
+    }
 
     #[ArrayableFieldOption(Analysis::NAME)]
     public function getAnalysis(): Analysis
     {
-        return $this->analysis ??= new Analysis();
+        return $this->analysis;
     }
 
     public function setAnalysis(Analysis $value): self
@@ -56,7 +62,10 @@ class Settings implements Arrayable, \JsonSerializable
 
         $result = array_merge($result, $this->getSettings());
 
-        return $result;
+        return array_filter(
+            $result,
+            static fn($v) => null !== $v
+        );
     }
 
     public function jsonSerialize(): array

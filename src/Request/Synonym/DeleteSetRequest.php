@@ -13,6 +13,11 @@ class DeleteSetRequest extends AbstractSynonymRequest
     ) {
     }
 
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
     protected function buildData(array $data): array
     {
         $data[self::FIELD_ID] = $this->id;

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Esindex\Builder\Response\Document;
+namespace Esindex\Builder\Response;
 
 use Esindex\DTO\Response\Document\ShardFailureDTO;
-use Esindex\DTO\Response\Document\ShardsDTO;
+use Esindex\DTO\Response\ShardsDTO;
 
 class ShardsBuilder
 {

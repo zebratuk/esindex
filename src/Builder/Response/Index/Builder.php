@@ -18,6 +18,10 @@ class Builder
 {
     public const FIELD_ACKNOWLEDGED = 'acknowledged';
 
+    /**
+     * @param array $data
+     * @return CreateResponse
+     */
     static public function buildCreateResponse(array $data): CreateResponse
     {
         return new CreateResponse(

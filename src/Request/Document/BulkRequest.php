@@ -42,12 +42,9 @@ class BulkRequest extends AbstractDocumentRequest
 
     protected function buildData(array $data): array
     {
-        $result = [self::FIELD_BODY => $this->collection->toArray()];
+        $data[self::FIELD_BODY] = $this->collection->toArray();
+        $data[self::FIELD_INDEX] = $this->index;
 
-        if (null !== $this->index) {
-            $result[self::FIELD_INDEX] = $this->index;
-        }
-
-        return $result;
+        return $data;
     }
 }

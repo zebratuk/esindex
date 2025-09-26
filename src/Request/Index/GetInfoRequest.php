@@ -31,6 +31,9 @@ class GetInfoRequest extends AbstractIndexRequest
         $this->setFeatures($features);
     }
 
+    /**
+     * @return string|string[]
+     */
     public function getIndex(): string|array
     {
         return $this->index;
@@ -69,17 +72,12 @@ class GetInfoRequest extends AbstractIndexRequest
 
     protected function buildData(array $data): array
     {
-        $result = [
-            self::FIELD_INDEX => $this->index,
-        ];
+        $data[self::FIELD_INDEX] = $this->index;
+        $data['features'] = array_map(
+            static fn($v) => $v->value,
+            $this->features
+        );
 
-        if (!empty($this->features)) {
-            $result['features'] = array_map(
-                static fn($v) => $v->value,
-                $this->features
-            );
-        }
-
-        return $result;
+        return $data;
     }
 }

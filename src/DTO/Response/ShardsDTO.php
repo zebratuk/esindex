@@ -1,9 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Esindex\DTO\Response\Document;
+namespace Esindex\DTO\Response;
 
 use Esindex\Contracts\Arrayable;
+use Esindex\DTO\Response\Document\ShardFailureDTO;
 
 class ShardsDTO implements Arrayable
 {

@@ -34,14 +34,9 @@ class AliasExistsRequest extends AbstractIndexRequest
 
     protected function buildData(array $data): array
     {
-        $result = [
-            'name' => $this->name,
-        ];
+        $data['name'] = $this->name;
+        $data[self::FIELD_INDEX] = $this->index;
 
-        if (null !== $this->index) {
-            $result[self::FIELD_INDEX] = $this->index;
-        }
-
-        return $result;
+        return $data;
     }
 }

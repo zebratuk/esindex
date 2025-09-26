@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Esindex\Builder\Response\Document;
 
+use Esindex\Builder\Response\ShardsBuilder;
 use Esindex\Common\ArrayUtil;
 use Esindex\DTO\Response\Document\DocumentDTO;
 use Esindex\Enums\Response\Document\ResultEnum;

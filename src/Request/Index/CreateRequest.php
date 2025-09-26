@@ -67,17 +67,11 @@ class CreateRequest extends AbstractIndexRequest
     {
         $data[self::FIELD_INDEX] = $this->name;
 
-        if (null !== $this->aliases) {
-            $data[self::FIELD_BODY]['aliases'] = $this->aliases->toArray();
-        }
-
-        if (null !== $this->settings) {
-            $data[self::FIELD_BODY]['settings'] = $this->settings->toArray();
-        }
-
-        if (null !== $this->mappings) {
-            $data[self::FIELD_BODY]['mappings'] = $this->mappings->toArray();
-        }
+        $data[self::FIELD_BODY] = [
+            'aliases' => $this->aliases?->toArray(),
+            'settings' => $this->settings?->toArray(),
+            'mappings' => $this->mappings?->toArray(),
+        ];
 
         return $data;
     }

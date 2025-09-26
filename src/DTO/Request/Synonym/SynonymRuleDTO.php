@@ -5,7 +5,7 @@ namespace Esindex\DTO\Request\Synonym;
 
 use Esindex\Contracts\Arrayable;
 
-class SynonymDTO implements Arrayable, \JsonSerializable
+class SynonymRuleDTO implements Arrayable, \JsonSerializable
 {
     public function __construct(
         readonly public string $synonyms,

@@ -3,21 +3,21 @@ declare(strict_types=1);
 
 namespace Esindex\Request\Synonym;
 
-use Esindex\DTO\Request\Synonym\SynonymDTO;
+use Esindex\DTO\Request\Synonym\SynonymRuleDTO;
 
 /**
- * @link
+ * @link https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-synonyms-put-synonym
  */
 class CreateSetRequest extends AbstractSynonymRequest
 {
     /**
-     * @var SynonymDTO[]
+     * @var SynonymRuleDTO[]
      */
     private array $synonymsSet = [];
 
     /**
      * @param string $id
-     * @param SynonymDTO[] $synonymsSet
+     * @param SynonymRuleDTO[] $synonymsSet
      */
     public function __construct(
         readonly private string $id,
@@ -26,8 +26,13 @@ class CreateSetRequest extends AbstractSynonymRequest
         $this->setSynonymsSet($synonymsSet);
     }
 
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
     /**
-     * @return SynonymDTO[]
+     * @return SynonymRuleDTO[]
      */
     public function getSynonymsSet(): array
     {
@@ -35,20 +40,20 @@ class CreateSetRequest extends AbstractSynonymRequest
     }
 
     /**
-     * @param SynonymDTO[] $values
+     * @param SynonymRuleDTO[] $values
      * @return $this
      */
     public function setSynonymsSet(array $values): self
     {
         $this->synonymsSet = [];
         foreach ($values as $value) {
-            $this->addSynonymSet($value);
+            $this->addSynonymSetRule($value);
         }
 
         return $this;
     }
 
-    public function addSynonymSet(SynonymDTO $synonym): self
+    public function addSynonymSetRule(SynonymRuleDTO $synonym): self
     {
         $this->synonymsSet[] = $synonym;
         return $this;

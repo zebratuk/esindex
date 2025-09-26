@@ -30,9 +30,9 @@ class AliasDeleteRequest extends AbstractIndexRequest
 
     protected function buildData(array $data): array
     {
-        return [
-            self::FIELD_INDEX => $this->index,
-            'name' => $this->alias,
-        ];
+        $data[self::FIELD_INDEX] = $this->index;
+        $data['name'] = $this->alias;
+
+        return $data;
     }
 }

@@ -8,6 +8,7 @@ use Esindex\Behavior\Request\HasErrorTrace;
 use Esindex\Behavior\Request\HasFilterPath;
 use Esindex\Behavior\Request\HasHuman;
 use Esindex\Behavior\Request\HasPretty;
+use Esindex\Common\ArrayUtil;
 use Esindex\Contracts\RequestInterface;
 
 abstract class AbstractRequest implements RequestInterface
@@ -22,6 +23,7 @@ abstract class AbstractRequest implements RequestInterface
 
     protected const FIELD_INDEX = 'index';
     protected const FIELD_BODY = 'body';
+    protected const FIELD_ID = 'id';
 
     /**
      * Build request data
@@ -36,6 +38,12 @@ abstract class AbstractRequest implements RequestInterface
         $result = (new SimpleReflectionResolver())
             ->buildDataForInstance($this);
 
-        return $this->buildData($result);
+        $result = $this->buildData($result);
+
+        if (!empty($result[self::FIELD_BODY])) {
+            $result[self::FIELD_BODY] = ArrayUtil::filterNullValues($result[self::FIELD_BODY]);
+        }
+
+        return ArrayUtil::filterNullValues($result);
     }
 }

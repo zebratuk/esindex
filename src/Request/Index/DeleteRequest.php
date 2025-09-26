@@ -26,8 +26,7 @@ class DeleteRequest extends AbstractIndexRequest
 
     protected function buildData(array $data): array
     {
-        return [
-            self::FIELD_INDEX => $this->index,
-        ];
+        $data[self::FIELD_INDEX] = $this->index;
+        return $data;
     }
 }

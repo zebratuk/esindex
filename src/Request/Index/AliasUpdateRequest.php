@@ -51,15 +51,13 @@ class AliasUpdateRequest extends AbstractIndexRequest
 
     protected function buildData(array $data): array
     {
-        $actions = array_map(
-            static fn($v) => $v->toArray(),
-            $this->actions
-        );
-
-        return [
-            self::FIELD_BODY => [
-                'actions' => $actions,
-            ],
+        $data[self::FIELD_BODY] = [
+            'actions' => array_map(
+                static fn($v) => $v->toArray(),
+                $this->actions
+            ),
         ];
+
+        return $data;
     }
 }
