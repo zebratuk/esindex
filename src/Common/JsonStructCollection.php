@@ -13,12 +13,18 @@ use Esindex\Exceptions\AssertException;
 class JsonStructCollection implements Arrayable, \JsonSerializable
 {
     /**
-     * @var T[]
+     * @var T[]|array<string,null>
      */
     private array $items = [];
 
+    public function __construct(
+        array $items = []
+    ) {
+        $this->setItems($items);
+    }
+
     /**
-     * @return T[]
+     * @return T[]|array<string,null>
      */
     public function getItems(): array
     {
@@ -26,14 +32,14 @@ class JsonStructCollection implements Arrayable, \JsonSerializable
     }
 
     /**
-     * @param T ...$items
+     * @param T[] $items
      * @return self
      */
-    public function setItems(JsonStructInterface ...$items): self
+    public function setItems(array $items): self
     {
         $this->items = [];
         foreach ($items as $item) {
-            $this->addItem($items);
+            $this->addItem($item);
         }
 
         return $this;
@@ -61,6 +67,17 @@ class JsonStructCollection implements Arrayable, \JsonSerializable
         return $this;
     }
 
+    public function markItemAsNull(string $name): self
+    {
+        $this->items[$name] = null;
+        return $this;
+    }
+
+    public function count(): int
+    {
+        return \count($this->items);
+    }
+
     /**
      * @param T $item
      * @return void
@@ -72,8 +89,8 @@ class JsonStructCollection implements Arrayable, \JsonSerializable
 
     public function toArray(): array
     {
-        return array_map(
-            static fn($item) => $item->toArray(),
+        return \array_map(
+            static fn($item) => $item?->toArray(),
             $this->getItems()
         );
     }

@@ -14,7 +14,7 @@ trait HasProperties
 {
     private ?FieldCollection $optProperties = null;
 
-    #[ArrayableFieldOption('properties')]
+    #[ArrayableFieldOption(optionLiteral: 'properties', isFilterEmptyValues: false)]
     public function getProperties(): ?FieldCollection
     {
         return $this->optProperties ??= new FieldCollection();
@@ -29,6 +29,14 @@ trait HasProperties
     public function addProperty(FieldInterface $property): self
     {
         $this->getProperties()->addItem($property);
+        return $this;
+    }
+
+    public function markPropertyAsDeleted(FieldInterface|string $property): self
+    {
+        $this->getProperties()->markItemAsNull(
+            is_string($property) ? $property : $property->getName()
+        );
         return $this;
     }
 }

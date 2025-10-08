@@ -1,6 +1,6 @@
 {
     "name": "zebratuk/esindex",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "time": "2025-06-18",
     "homepage": "https://github.com/zebratuk/esindex",
     "description": "Elasticsearch index builder",
