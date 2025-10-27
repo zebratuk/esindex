@@ -21,24 +21,24 @@ class ArrayableFieldOption extends FieldOption
     public function processValue(mixed $value): mixed
     {
         if (
-            is_object($value)
+            \is_object($value)
             && (
                 $value instanceof Arrayable
-                || method_exists($value, 'toArray')
+                || \method_exists($value, 'toArray')
             )
         ) {
             $value = $value->toArray();
         }
 
         if (
-            is_array($value)
+            \is_array($value)
             && $this->isFilterEmptyValues
         ) {
-            $value = array_filter(
+            $value = \array_filter(
                 $value,
                 static fn($v) => match(true) {
-                    is_null($v) => false,
-                    is_string($v), is_array($v) => !empty($v),
+                    \is_null($v) => false,
+                    \is_string($v), \is_array($v) => !empty($v),
                     default => true
                 }
             );

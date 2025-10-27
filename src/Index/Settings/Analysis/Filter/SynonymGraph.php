@@ -8,9 +8,9 @@ use Esindex\Behavior\Index\Settings\Analysis\HasSynonym;
 use Esindex\Enums\Index\Analysis\FilterTypeEnum;
 
 /**
- * @link https://www.elastic.co/guide/en/elasticsearch/reference/8.18/analysis-synonym-tokenfilter.html
+ * @link https://www.elastic.co/guide/en/elasticsearch/reference/8.18/analysis-synonym-graph-tokenfilter.html
  */
-class Synonym extends AbstractFilter
+class SynonymGraph extends AbstractFilter
 {
     use HasSynonym;
 
@@ -20,7 +20,7 @@ class Synonym extends AbstractFilter
 
     public function getType(): FilterTypeEnum
     {
-        return FilterTypeEnum::SYNONYM;
+        return FilterTypeEnum::SYNONYM_GRAPH;
     }
 
     #[BooleanFieldOption('updateable')]

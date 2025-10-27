@@ -4,13 +4,15 @@ declare(strict_types=1);
 namespace Esindex\Index\Mappings;
 
 use Esindex\Attribute\Resolver\FieldOptionResolver;
-use Esindex\Behavior\Index\Mappings\HasScript;
+use Esindex\Behavior\Index\HasScript;
+use Esindex\Behavior\Index\Mappings\HasOnScriptError;
 use Esindex\Contracts\Index\Mappings\RuntimeFieldInterface;
 use Esindex\Enums\Index\Mappings\RuntimeFieldTypeEnum;
 
 class RuntimeField implements RuntimeFieldInterface
 {
-    use HasScript;
+    use HasScript,
+        HasOnScriptError;
 
     /**
      * @param string $name

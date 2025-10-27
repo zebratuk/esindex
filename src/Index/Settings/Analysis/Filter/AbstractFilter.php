@@ -33,12 +33,12 @@ abstract class AbstractFilter implements FilterInterface, \JsonSerializable
 
         $result['type'] = $this->getType()->value;
 
-        $data = array_filter(
+        $data = \array_filter(
             $this->buildData(),
             static fn($v) => null !== $v
         );
 
-        return array_merge($result, $data);
+        return \array_merge($result, $data);
     }
 
     /**

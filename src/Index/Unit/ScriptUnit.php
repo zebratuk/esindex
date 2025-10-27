@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Esindex\Index\Mappings\Unit;
+namespace Esindex\Index\Unit;
 
 use Esindex\Contracts\Arrayable;
 use Esindex\Enums\Index\Mappings\ScriptLangEnum;

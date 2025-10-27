@@ -67,6 +67,11 @@ class JsonStructCollection implements Arrayable, \JsonSerializable
         return $this;
     }
 
+    public function hasItem(string $name): bool
+    {
+        return isset($this->items[$name]);
+    }
+
     public function markItemAsNull(string $name): self
     {
         $this->items[$name] = null;

@@ -10,7 +10,7 @@ class ErrorBuilder
 {
     public static function buildResponse(array $data): Error
     {
-        $error = is_string($data['error'])
+        $error = \is_string($data['error'])
             ? $data['error']
             : new ErrorDTO($data['error']);
 

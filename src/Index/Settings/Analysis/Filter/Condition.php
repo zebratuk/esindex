@@ -6,7 +6,7 @@ namespace Esindex\Index\Settings\Analysis\Filter;
 use Esindex\Enums\Index\Analysis\FilterTypeEnum;
 use Esindex\Enums\Index\SectionEnum;
 use Esindex\Exceptions\InvalidConfigurationException;
-use Esindex\Index\Mappings\Unit\ScriptUnit;
+use Esindex\Index\Unit\ScriptUnit;
 
 /**
  * @link https://www.elastic.co/guide/en/elasticsearch/reference/8.18/analysis-condition-tokenfilter.html

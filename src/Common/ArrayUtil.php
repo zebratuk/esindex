@@ -17,7 +17,7 @@ class ArrayUtil
 
     public static function filterNullValues(array $data): array
     {
-        return array_filter(
+        return \array_filter(
             $data,
             static fn($v) => null !== $v
         );

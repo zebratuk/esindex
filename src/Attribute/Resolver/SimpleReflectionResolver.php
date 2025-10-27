@@ -43,7 +43,7 @@ class SimpleReflectionResolver
 
             $collection = new AttributeCollection($method);
             $collection->setAttributes(
-                array_map(
+                \array_map(
                     static fn($attribute) => $attribute->newInstance(),
                     $attributes
                 )
@@ -77,7 +77,7 @@ class SimpleReflectionResolver
             }
 
             if (
-                (is_string($value) || is_array($value))
+                (\is_string($value) || \is_array($value))
                 && empty($value)
                 && !$attribute->isEmptyResultAvailable()
             ) {

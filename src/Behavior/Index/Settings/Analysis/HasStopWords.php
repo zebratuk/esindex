@@ -22,11 +22,11 @@ trait HasStopWords
     public function setStopWords(string|array|null $value): self
     {
         $this->optStopWords = match(true) {
-            is_array($value) => [],
+            \is_array($value) => [],
             default => $value
         };
 
-        if (is_array($value)) {
+        if (\is_array($value)) {
             foreach ($value as $word) {
                 $this->addStopWord($word);
             }
@@ -38,8 +38,8 @@ trait HasStopWords
     public function addStopWord(string $value): self
     {
         $this->optStopWords = match(true) {
-            is_array($this->optStopWords) => $this->optStopWords,
-            is_string($this->optStopWords) => [$this->optStopWords],
+            \is_array($this->optStopWords) => $this->optStopWords,
+            \is_string($this->optStopWords) => [$this->optStopWords],
             default => []
         };
 

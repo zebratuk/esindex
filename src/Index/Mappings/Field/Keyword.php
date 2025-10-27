@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Esindex\Index\Mappings\Field;
 
+use Esindex\Behavior\Index\HasScript;
 use Esindex\Behavior\Index\Mappings\HasDocValues;
 use Esindex\Behavior\Index\Mappings\HasEagerGlobalOrdinals;
 use Esindex\Behavior\Index\Mappings\HasFields;
@@ -13,7 +14,7 @@ use Esindex\Behavior\Index\Mappings\HasMeta;
 use Esindex\Behavior\Index\Mappings\HasNormalizer;
 use Esindex\Behavior\Index\Mappings\HasNorms;
 use Esindex\Behavior\Index\Mappings\HasNullValue;
-use Esindex\Behavior\Index\Mappings\HasScript;
+use Esindex\Behavior\Index\Mappings\HasOnScriptError;
 use Esindex\Behavior\Index\Mappings\HasSimilarity;
 use Esindex\Behavior\Index\Mappings\HasSplitQueriesOnWhitespace;
 use Esindex\Behavior\Index\Mappings\HasStore;
@@ -36,6 +37,7 @@ class Keyword extends AbstractField
         HasNorms,
         HasNullValue,
         HasScript,
+        HasOnScriptError,
         HasStore,
         HasSimilarity,
         HasNormalizer,

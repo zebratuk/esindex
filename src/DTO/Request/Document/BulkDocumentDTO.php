@@ -5,7 +5,7 @@ namespace Esindex\DTO\Request\Document;
 
 use Esindex\Enums\Request\Document\BulkActionEnum;
 use Esindex\Enums\Request\VersionTypeEnum;
-use Esindex\Index\Mappings\Unit\ScriptUnit;
+use Esindex\Index\Unit\ScriptUnit;
 
 class BulkDocumentDTO extends DocumentDTO
 {

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Esindex\Index\Settings\Analysis\Filter;
 
+use Esindex\Attribute\BooleanFieldOption;
 use Esindex\Behavior\Index\Settings\Analysis\HasStopWords;
 use Esindex\Enums\Index\Analysis\FilterTypeEnum;
 
@@ -14,13 +15,14 @@ class Stop extends AbstractFilter
     use HasStopWords;
 
     private ?bool $ignoreCase = null;
-    private ?bool $removeTrailing= null;
+    private ?bool $removeTrailing = null;
 
     public function getType(): FilterTypeEnum
     {
         return FilterTypeEnum::STOP;
     }
 
+    #[BooleanFieldOption('ignore_case')]
     public function getIgnoreCase(): ?bool
     {
         return $this->ignoreCase;
@@ -32,6 +34,7 @@ class Stop extends AbstractFilter
         return $this;
     }
 
+    #[BooleanFieldOption('remove_trailing')]
     public function getRemoveTrailing(): ?bool
     {
         return $this->removeTrailing;
@@ -41,13 +44,5 @@ class Stop extends AbstractFilter
     {
         $this->removeTrailing = $value;
         return $this;
-    }
-
-    protected function buildData(): array
-    {
-        return [
-            'ignore_case' => $this->ignoreCase,
-            'remove_trailing' => $this->removeTrailing,
-        ];
     }
 }
